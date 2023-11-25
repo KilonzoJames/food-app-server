@@ -12,3 +12,4 @@ class FoodItemSchema(ma.SQLAlchemyAutoSchema):
 
     class Meta:
         model = FoodItem
+        load_instance=True
