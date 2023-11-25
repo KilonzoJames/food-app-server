@@ -12,7 +12,7 @@ class FoodItemResource(Resource):
         food_items = FoodItem.query.all()
         food_item_schema = FoodItemSchema(many=True)
         json_string = food_item_schema.dump(food_items)
-        return {"results": json_string}
+        return json_string
 
 class FoodItemId(Resource):
     def get(self, id):

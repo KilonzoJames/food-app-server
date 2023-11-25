@@ -13,7 +13,7 @@ class OrderResource(Resource):
         orders = Order.query.all()
         order_schema = OrderSchema(many=True)
         json_string = order_schema.dump(orders)
-        return {"results": json_string}
+        return json_string
     
     def post(self):
         try:
@@ -30,7 +30,7 @@ class OrderResource(Resource):
 
             # Return the newly created order
             result = schema.dump(new_order)
-            return {"result": result}, 201  # HTTP status code for "Created"
+            return result , 201  # HTTP status code for "Created"
 
         except ValidationError as e:
             return jsonify(e.messages), 400
@@ -59,7 +59,7 @@ class OrderId(Resource):
 
             # Return the updated order
             result = schema.dump(order)
-            return {"result": result}
+            return result
 
         except ValidationError as e:
             return jsonify(e.messages), 400

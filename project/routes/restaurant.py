@@ -12,7 +12,7 @@ class RestaurantResource(Resource):
         restaurants = Restaurant.query.all()
         restaurant_schema = RestaurantSchema(many=True)
         json_string = restaurant_schema.dump(restaurants)
-        return {"results": json_string}
+        return json_string
 
 class RestaurantId(Resource):
     def get(self, id):
